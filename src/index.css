@@ -186,7 +186,7 @@ button:hover{
   margin-bottom: 6px;
   
 }
-#pomodoro{
+#pomodoro, #shortBreak, #longBreak{
   border:none;
   background-color: var(--white-gray);
   padding: 1rem;
