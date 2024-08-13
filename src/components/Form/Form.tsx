@@ -18,7 +18,7 @@ export const Form: React.FC<FormProps> = ({ openModal, closeModal }) => {
     preferences,
     handleIncrementDecrement,
     handleChange,
-  } = useContext<SettingsContextType>(SettingsContext );
+  } = useContext(SettingsContext) as SettingsContextType;
 
   useEffect(() => {
     if (openModal) {
@@ -29,7 +29,7 @@ export const Form: React.FC<FormProps> = ({ openModal, closeModal }) => {
   }, [openModal]);
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    const root = document.querySelector("html")!;
+    const root = document.querySelector("html") as HTMLElement;
     e.preventDefault();
     const target = e.target as typeof e.target & {
       color: { value: string };
@@ -37,8 +37,10 @@ export const Form: React.FC<FormProps> = ({ openModal, closeModal }) => {
     };
     Cookies.set("data-theme", target.color.value);
     Cookies.set("font", target.font.value);
+
     const themeColor = target.color.value === "red" ? RED_COLOR : target.color.value === "blue" ? BLUE_COLOR : PURPLE_COLOR;
     const savedFont = target.font.value === "Kumbh Sans" ? KUMBH_FONT : target.font.value === "Roboto Slab" ? ROBOTO_FONT : SPACE_FONT;
+
     root.style.setProperty("--color-primary", themeColor["--color-primary"]);
     root.style.setProperty("--color-primary-hover", themeColor["--color-primary-hover"]);
     root.style.setProperty("--font-primary", savedFont["--font-primary"]);
@@ -97,7 +99,7 @@ export const Form: React.FC<FormProps> = ({ openModal, closeModal }) => {
               <div>
                 <input
                   checked={preferences.font === "Kumbh"}
-                  onClick={() => setPreferences({ ...preferences, font: "Kumbh" })}
+                  onChange={() => setPreferences({ ...preferences, font: "Kumbh" })}
                   type="radio"
                   id="Kumbh"
                   name="font"
@@ -108,7 +110,7 @@ export const Form: React.FC<FormProps> = ({ openModal, closeModal }) => {
               <div>
                 <input
                   checked={preferences.font === "Roboto"}
-                  onClick={() => setPreferences({ ...preferences, font: "Roboto" })}
+                  onChange={() => setPreferences({ ...preferences, font: "Roboto" })}
                   type="radio"
                   id="Roboto"
                   name="font"
@@ -119,7 +121,7 @@ export const Form: React.FC<FormProps> = ({ openModal, closeModal }) => {
               <div>
                 <input
                   checked={preferences.font === "Space"}
-                  onClick={() => setPreferences({ ...preferences, font: "Space" })}
+                  onChange={() => setPreferences({ ...preferences, font: "Space" })}
                   type="radio"
                   id="Space"
                   name="font"
@@ -135,7 +137,7 @@ export const Form: React.FC<FormProps> = ({ openModal, closeModal }) => {
               <div>
                 <input
                   checked={preferences.color === "red"}
-                  onClick={() => setPreferences({ ...preferences, color: "red" })}
+                  onChange={() => setPreferences({ ...preferences, color: "red" })}
                   type="radio"
                   id="red"
                   name="color"
@@ -162,7 +164,7 @@ export const Form: React.FC<FormProps> = ({ openModal, closeModal }) => {
               <div>
                 <input
                   checked={preferences.color === "blue"}
-                  onClick={() => setPreferences({ ...preferences, color: "blue" })}
+                  onChange={() => setPreferences({ ...preferences, color: "blue" })}
                   type="radio"
                   id="blue"
                   name="color"
@@ -189,7 +191,7 @@ export const Form: React.FC<FormProps> = ({ openModal, closeModal }) => {
               <div>
                 <input
                   checked={preferences.color === "purple"}
-                  onClick={() => setPreferences({ ...preferences, color: "purple" })}
+                  onChange={() => setPreferences({ ...preferences, color: "purple" })}
                   type="radio"
                   id="purple"
                   name="color"
