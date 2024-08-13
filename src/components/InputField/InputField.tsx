@@ -1,28 +1,37 @@
-export const InputField = ({
+import React, { ChangeEvent } from "react";
+
+interface InputFieldProps {
+  label: string;
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  value: number;
+  handleIncrementDecrement: (name: string, type: "increment" | "decrement") => void;
+  name: string;
+}
+
+export const InputField: React.FC<InputFieldProps> = ({
   label,
   handleChange,
   value,
   handleIncrementDecrement,
-  name
-  
+  name,
 }) => {
   return (
     <div className="input-field">
-      <label htmlFor="time">{label}</label>
+      <label htmlFor={name}>{label}</label>
       <input
         value={value}
-        onChange={(e) => handleChange(e)}
+        onChange={handleChange}
         type="text"
         name={name}
-        id="pomodoro"
+        id={name}
       />
       <div className="arrow-container">
         <svg
           className="arrow"
           xmlns="http://www.w3.org/2000/svg"
           width="20"
-          onClick={() => handleIncrementDecrement(name,"increment")}
           height="10"
+          onClick={() => handleIncrementDecrement(name, "increment")}
         >
           <path
             fill="none"
@@ -33,11 +42,11 @@ export const InputField = ({
           />
         </svg>
         <svg
-          onClick={() => handleIncrementDecrement(name,"decrement")}
           className="arrow"
           xmlns="http://www.w3.org/2000/svg"
           width="20"
           height="10"
+          onClick={() => handleIncrementDecrement(name, "decrement")}
         >
           <path
             fill="none"

@@ -4,6 +4,7 @@ interface TimeState {
   pomodoro: number;
   shortBreak: number;
   longBreak: number;
+  [key: string]: number;
 }
 
 interface PreferencesState {
@@ -17,7 +18,7 @@ export interface SettingsContextType {
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
   preferences: PreferencesState;
   setPreferences: React.Dispatch<React.SetStateAction<PreferencesState>>;
-  handleIncrementDecrement: (name: keyof TimeState, type: "increment" | "decrement") => void;
+  handleIncrementDecrement: (name: string, type: "increment" | "decrement") => void;
   currentTab: string;
   setCurrentTab: React.Dispatch<React.SetStateAction<string>>;
   totalTime: TimeState;
@@ -64,7 +65,7 @@ const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) => {
     }
   };
 
-  const handleIncrementDecrement = (name: keyof TimeState, type: "increment" | "decrement") => {
+  const handleIncrementDecrement = (name: string, type: "increment" | "decrement") => {
     setTime((prev) => ({
       ...prev,
       [name]: prev[name] + (type === "increment" ? 1 : -1) * 60,
