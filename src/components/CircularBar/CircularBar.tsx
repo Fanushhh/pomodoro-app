@@ -1,6 +1,12 @@
 import React from 'react';
 
-const CircularProgressBar = ({ size, strokeWidth, percentage }) => {
+interface CircularProgressBarProps {
+  size: number;
+  strokeWidth: number;
+  percentage: number;
+}
+
+const CircularProgressBar: React.FC<CircularProgressBarProps> = ({ size, strokeWidth, percentage }) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (percentage / 100) * circumference;

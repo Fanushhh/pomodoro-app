@@ -1,19 +1,24 @@
-import { useRef, useEffect, useContext } from "react";
-import { SettingsContext } from "../../providers/SettingsProvider";
+import { useRef, useEffect, useContext, FormEvent } from "react";
+import { SettingsContext, SettingsContextType } from "../../providers/SettingsProvider";
 import Cookies from "js-cookie";
 import { RED_COLOR, BLUE_COLOR, PURPLE_COLOR } from "../../constants";
 import { KUMBH_FONT, ROBOTO_FONT, SPACE_FONT } from "../../constants";
 import { InputField } from "../InputField/InputField";
-export const Form = ({ openModal, closeModal }) => {
-  const modalRef = useRef();
+
+interface FormProps {
+  openModal: boolean;
+  closeModal: () => void;
+}
+
+export const Form: React.FC<FormProps> = ({ openModal, closeModal }) => {
+  const modalRef = useRef<HTMLDialogElement>(null);
   const {
-    time,
     totalTime,
     setPreferences,
     preferences,
     handleIncrementDecrement,
     handleChange,
-  } = useContext(SettingsContext);
+  } = useContext<SettingsContextType>(SettingsContext );
 
   useEffect(() => {
     if (openModal) {
@@ -23,13 +28,17 @@ export const Form = ({ openModal, closeModal }) => {
     }
   }, [openModal]);
 
-  function handleSubmit(e) {
-    const root = document.querySelector("html");
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    const root = document.querySelector("html")!;
     e.preventDefault();
-    Cookies.set("data-theme", e.target.color.value);
-    Cookies.set("font", e.target.font.value);
-    const themeColor = e.target.color.value === "red" ? RED_COLOR : e.target.color.value === "blue" ? BLUE_COLOR : PURPLE_COLOR;
-    const savedFont = e.target.font.value === "Kumbh Sans" ? KUMBH_FONT : e.target.font.value === "Roboto Slab" ? ROBOTO_FONT : SPACE_FONT;
+    const target = e.target as typeof e.target & {
+      color: { value: string };
+      font: { value: string };
+    };
+    Cookies.set("data-theme", target.color.value);
+    Cookies.set("font", target.font.value);
+    const themeColor = target.color.value === "red" ? RED_COLOR : target.color.value === "blue" ? BLUE_COLOR : PURPLE_COLOR;
+    const savedFont = target.font.value === "Kumbh Sans" ? KUMBH_FONT : target.font.value === "Roboto Slab" ? ROBOTO_FONT : SPACE_FONT;
     root.style.setProperty("--color-primary", themeColor["--color-primary"]);
     root.style.setProperty("--color-primary-hover", themeColor["--color-primary-hover"]);
     root.style.setProperty("--font-primary", savedFont["--font-primary"]);
