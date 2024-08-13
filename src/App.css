@@ -5,6 +5,7 @@
     justify-content: flex-start;
     align-items: center;
     background-color: var(--dark-blue);
+    padding:24px;
 }
 .main-container > h1{
     color: var(--white-gray);
@@ -35,6 +36,22 @@
     background-color:var(--color-primary);
     opacity: 1;
     color:black;
+}
+
+@media (max-width:600px){
+    .navbar{
+        justify-content:space-between;
+        width: 100%;
+        padding: 12px 16px;
+    }
+    .navbar button{
+        font-size:12px;
+        line-height: 14px;
+        padding:0;
+    }
+    .navbar button.active{
+        padding:14px 24px;
+    }
 }
 
 /* Circle styling */
@@ -109,4 +126,27 @@
   }
   .settings-button > button > svg> path:hover{
     fill:var(--white);
+  }
+
+  @media (max-width:600px){
+    .main-circle{
+        width: 300px;
+        height: 300px;
+    }
+    .inner-circle{
+        width: 260px;
+        height: 260px;
+    }
+    .colored-circle button{
+        font-size: 12px;
+        letter-spacing: 5px;
+    }
+    .circular-progress-bar{
+        top:auto;
+        left:auto;
+    }
+    .timer{
+        font-size: 80px;
+        line-height: 88px;
+    }
   }
