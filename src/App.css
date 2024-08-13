@@ -1,0 +1,112 @@
+.main-container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--dark-blue);
+}
+.main-container > h1{
+    color: var(--white-gray);
+    font-size:32px;
+    line-height: 38px;
+    letter-spacing: 0px;
+    margin-top: 2rem;
+}
+.navbar{
+    margin:3rem 0;
+    background-color:var(--darker-blue);
+    padding:8px;
+    border-radius: 32px;
+    display:flex;
+    gap:1rem;
+    z-index: 10;
+}
+.navbar button{
+    background:transparent;
+    color:#D7E0FF;
+    opacity: 0.3;
+    
+}
+.navbar button:hover{
+    background-color: transparent;
+}
+.navbar button.active{
+    background-color:var(--color-primary);
+    opacity: 1;
+    color:black;
+}
+
+/* Circle styling */
+
+.main-circle{
+    background:linear-gradient(to top left, #2E325A, #0E112A);
+    padding:22px;
+    border-radius: 50%;
+    width: 410px;
+    height: 410px;
+    box-shadow: -50px -50px 100px #272C5A, 50px 50px 100px #121530;
+    
+    
+}
+
+.timer{
+    color: var(--light-gray);
+    letter-spacing: -5px;
+}
+
+.inner-circle{
+    width: 366px;
+    height: 366px;
+    background-color: var(--darker-blue);
+    border-radius: 50%;
+    position:relative;
+    padding:13.5px;
+}
+
+.colored-circle{
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.colored-circle button{
+    background-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    font-weight: 400;
+    padding:0;
+}
+.colored-circle button:hover{
+    background-color: transparent;
+    color:var(--color-primary);
+}
+
+.circular-progress-bar {
+    transform: rotate(-90deg); /* Rotate to start from the top */
+    position:absolute;
+    top:13px;
+    left:13px;
+  }
+  
+  .progress {
+    transition: stroke-dashoffset 0.35s;
+    transform: rotate(0deg);
+    transform-origin: 50% 50%;
+  }
+
+  .settings-button > button{
+    background-color:transparent;
+
+  }
+  .settings-button > button:hover{
+    background-color:transparent;
+    
+  }
+  .settings-button > button > svg> path:hover{
+    fill:var(--white);
+  }
