@@ -273,13 +273,13 @@ input[type="radio"]{
 
 
 label[for="Kumbh"]{
-  font-family: var(--font-primary);
+  font-family: 'Kumbh Sans', sans-serif;
 }
 label[for="Roboto"]{
-  font-family: var(--font-primary);
+  font-family: 'Roboto Slab', sans-serif;
 }
 label[for="Space"]{
-  font-family: var(--font-primary);
+  font-family:  'Space Mono', monospace;
 }
 label[for="red"], label[for="blue"], label[for="purple"]{
   width: 40px;
@@ -302,7 +302,22 @@ label[for="purple"]{
   transform: translateX(-50%);
 
 }
-#red:checked + label, #blue:checked + label, #purple:checked + label{
-  
+@media (max-width:600px){
+  .pomoForm{
+    flex-direction: column;
+    
+  }
+  .input-field{
+    display:flex;
+    gap:1rem;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .input-field input{
+    width:140px;
+  }
+  .arrow-container{
+    top:10.5px;
+  }
 }
 
