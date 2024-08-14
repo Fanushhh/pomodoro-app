@@ -33,10 +33,10 @@ export const NavTab: React.FC = () => {
           style={{ transition: "all 0.2s ease" }}
           onClick={() => {
             setCurrentTab(tab.id.toString());
-            setTotalTime((prev) => ({
-              ...prev,
-              [tab.id]: time[tab.id],
-            }));
+            // setTotalTime((prev) => ({
+            //   ...prev,
+            //   [tab.id]: time[tab.id],
+            // }));
           }}
         >
           {tab.name}
