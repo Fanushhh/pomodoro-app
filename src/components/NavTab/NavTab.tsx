@@ -7,7 +7,7 @@ interface Tab {
 }
 
 export const NavTab: React.FC = () => {
-  const { currentTab, setCurrentTab, setTotalTime, time } = React.useContext(SettingsContext) as SettingsContextType;
+  const { currentTab, setCurrentTab } = React.useContext(SettingsContext) as SettingsContextType;
 
   const tabs: Tab[] = [
     {
